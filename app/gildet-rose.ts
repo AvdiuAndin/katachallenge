@@ -23,22 +23,23 @@ export class GildedRose {
         let name = item.name.toLocaleLowerCase();
 
         if(name.indexOf('aged brie') > -1){
-            return new AgedBrie(item.name, item.sellIn, item.quality);
+            return new AgedBrie(item.name, item.sellIn, item.quality, true);
         }
 
         if(name.indexOf('backstage passes') > -1){
-            return new BackStageItem(item.name, item.sellIn, item.quality);
+            return new BackStageItem(item.name, item.sellIn, item.quality , true);
         }
 
         if(name.indexOf('sulfuras') > -1){
-            return new SulfurasItem(item.name, item.sellIn, item.quality);
+            console.log("created");
+            return new SulfurasItem(item.name, item.sellIn, item.quality, false);
         }
 
         if(name.indexOf('conjured') > -1) {
-            return new ConjuredItem(item.name, item.sellIn, item.quality);
+            return new ConjuredItem(item.name, item.sellIn, item.quality, true);
         }
 
-        return new CasualItem(item.name, item.sellIn, item.quality);
+        return new CasualItem(item.name, item.sellIn, item.quality, true);
         
     }
 
@@ -66,6 +67,22 @@ export class GildedRose {
 
     decreaseSellIn(item:Item){
         item.sellIn--;
+    }
+
+    sellItems(){
+        let _this = this;
+        this.items = this.items.filter(function(item, index, object) {
+            if(_this.itemImplementsUpdateStateInterface(item)){
+                if (item.sellable) {
+                    return false;
+                } else {
+                    console.log("Legendary Items are not for sale");
+                    return true;
+                }
+            }
+        });
+        console.log("--- Items left---");
+        this.printItems();
     }
 
 }

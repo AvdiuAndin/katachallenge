@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { GildedRose } from '../app/gilded-rose';
+import { GildedRose } from '../app/gildet-rose';
 import { Item } from '../app/Models/Item/Item';
 
 describe('check if the item`s name is as the given input' , function () {

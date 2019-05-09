@@ -1,4 +1,4 @@
-import { GildedRose } from '../app/gilded-rose';
+import { GildedRose } from '../app/gildet-rose';
 import { Item } from '../app/Models/Item/Item';
 
 const items = [
@@ -21,3 +21,5 @@ for (let i = 0; i < days; i++) {
     gildedRose.printItems();
     gildedRose.updateQuality();
 }
+console.log("---Selling items---");
+gildedRose.sellItems();

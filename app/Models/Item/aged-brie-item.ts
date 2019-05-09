@@ -2,11 +2,10 @@ import { Item } from "./item";
 import { constants } from "../../Constants/constants";
 
 export class AgedBrie extends Item implements UpdateState {
-
     constructor(
         name: string,
         sellIn: number,
-        quality: number){
+        quality: number,public sellable: boolean){
             super(name,sellIn,quality);
         }
     
