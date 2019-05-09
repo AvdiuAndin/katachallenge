@@ -1,0 +1,5 @@
+export const constants = {
+    SULFURAS_MAX_QUALITY:80,
+    NORMAL_ITEM_MAX_QUALITY:50,
+    NORMAL_ITEM_MIN_QUALITY:0,
+}
