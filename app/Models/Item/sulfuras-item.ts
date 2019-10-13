@@ -1,15 +1,17 @@
 import { Item } from "./item";
+import {constants as CONSTANTS} from "../../Constants/constants";
 
-export class SulfurasItem extends Item implements UpdateState {
+export class SulfurasItem extends Item {
 
     constructor(
         name: string,
         sellIn: number,
-        quality: number, public sellable: boolean){
+        quality: number, isForSale: boolean = false){
             super(name,sellIn,quality);
+            this.isForSale = isForSale;
         }
-    
-    updateState(){
-        (this.quality < 80) ? this.quality + 1: this.quality = 80;
+
+    updateQuality(){
+        if( this.quality < CONSTANTS.SULFURAS_MAX_QUALITY) { this.quality++ } else { this.quality = 80 }
     }
 }
