@@ -6,7 +6,7 @@ export class BackStageItem extends Item implements UpdateState {
     constructor(
         name: string,
         sellIn: number,
-        quality: number,public sellable:boolean){
+        quality: number,public sellable:boolean = false){
             super(name,sellIn,quality);
         }
     

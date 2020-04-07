@@ -3,7 +3,6 @@ import { AgedBrie } from "./Models/Item/aged-brie-item";
 import { BackStageItem } from "./Models/Item/backstage-item";
 import { SulfurasItem } from "./Models/Item/sulfuras-item";
 import { ConjuredItem } from "./Models/Item/conjured-item";
-import { CasualItem } from "./Models/Item/casual-item";
 
 export class GildedRose {
     items: Array<Item>;
@@ -27,11 +26,10 @@ export class GildedRose {
         }
 
         if(name.indexOf('backstage passes') > -1){
-            return new BackStageItem(item.name, item.sellIn, item.quality , true);
+            return new BackStageItem(item.name, item.sellIn, item.quality, true);
         }
 
         if(name.indexOf('sulfuras') > -1){
-            console.log("created");
             return new SulfurasItem(item.name, item.sellIn, item.quality, false);
         }
 
@@ -39,7 +37,7 @@ export class GildedRose {
             return new ConjuredItem(item.name, item.sellIn, item.quality, true);
         }
 
-        return new CasualItem(item.name, item.sellIn, item.quality, true);
+        return new Item(item.name, item.sellIn, item.quality);
         
     }
 

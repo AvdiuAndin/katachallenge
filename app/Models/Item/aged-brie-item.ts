@@ -5,8 +5,9 @@ export class AgedBrie extends Item implements UpdateState {
     constructor(
         name: string,
         sellIn: number,
-        quality: number,public sellable: boolean){
+        quality: number, public sellable = false){
             super(name,sellIn,quality);
+            console.log("sellable ", sellable);
         }
     
     updateState(){
