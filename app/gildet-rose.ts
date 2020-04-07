@@ -1,23 +1,22 @@
 import { Item } from "./Models/Item/Item";
+<<<<<<< HEAD
 import { AgedBrie } from "./Models/Item/aged-brie-item";
 import { BackStageItem } from "./Models/Item/backstage-item";
 import { SulfurasItem } from "./Models/Item/sulfuras-item";
 import { ConjuredItem } from "./Models/Item/conjured-item";
+=======
+
+import {ProductCategorizer} from "./Controllers/ProductCategorizer";
+>>>>>>> master
 
 export class GildedRose {
     items: Array<Item>;
 
     constructor(items = [] as Array<Item>) {
-        this.items = this.categorizeItems(items);
-    }
-    categorizeItems(items: Array<Item>){
-        let arrayOfItems : Array<Item> = []
-        for(let item of items){
-            arrayOfItems.push(this.categorizeItemByName(item));
-        }
-        return arrayOfItems;
+        this.items = ProductCategorizer.categorizeProducts(items);
     }
 
+<<<<<<< HEAD
     private categorizeItemByName(item: Item): Item {
         let name = item.name.toLocaleLowerCase();
 
@@ -42,45 +41,12 @@ export class GildedRose {
     }
 
     updateQuality() {
+=======
+    updateStateOfItems() {
+>>>>>>> master
         for(let item of this.items){
-            this.decreaseSellIn(item);
-            if (this.itemImplementsUpdateStateInterface(item)) {
-                item.updateState();  // compiler knows it can update state now
-             }
+            item.updateStateOfItem();
         }
-        return this.items;
-    }
-
-    itemImplementsUpdateStateInterface(arg: any): arg is UpdateState {
-        return (arg as UpdateState).updateState !== undefined;
-    }
-     
-    printItems() {
-        console.log("#id, name, sellIn, quality");
-        this.items.forEach((element,i) => {
-            console.log(i + ':' + element.name + ' ' + element.sellIn + ' ' + element.quality);
-        });
-        console.log();
-    }
-
-    decreaseSellIn(item:Item){
-        item.sellIn--;
-    }
-
-    sellItems(){
-        let _this = this;
-        this.items = this.items.filter(function(item, index, object) {
-            if(_this.itemImplementsUpdateStateInterface(item)){
-                if (item.sellable) {
-                    return false;
-                } else {
-                    console.log("Legendary Items are not for sale");
-                    return true;
-                }
-            }
-        });
-        console.log("--- Items left---");
-        this.printItems();
     }
 
 }

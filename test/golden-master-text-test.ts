@@ -16,10 +16,7 @@ const items = [
 
 const gildedRose = new GildedRose(items);
 var days: number = 50;
-for (let i = 0; i < days; i++) {
-    console.log("-------- day " + i + " --------");
-    gildedRose.printItems();
-    gildedRose.updateQuality();
-}
-console.log("---Selling items---");
-gildedRose.sellItems();
+// for (let i = 0; i < days; i++) {
+//     gildedRose.updateQuality();
+// }
+// gildedRose.sellItems();

@@ -1,22 +1,16 @@
 import { Item } from "./item";
 
-export class ConjuredItem extends Item implements UpdateState {
+export class ConjuredItem extends Item{
 
     constructor(
         name: string,
         sellIn: number,
-        quality: number, public sellable:boolean){
+        quality: number){
             super(name,sellIn,quality);
         }
 
-    updateState(){
-        let substract;
-        if(this.sellIn < 0){
-            substract = this.quality - this.quality;
-        } else {
-            substract = this.quality - 2;
-        }
-        this.quality = (substract) < 0 ? 0 : substract;
+    updateQuality(){
+        this.quality = this.sellIn < 0 ? 0 : this.quality - 2;
         
     }
 }

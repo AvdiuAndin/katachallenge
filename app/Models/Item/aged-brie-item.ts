@@ -1,7 +1,7 @@
 import { Item } from "./item";
 import { constants } from "../../Constants/constants";
 
-export class AgedBrie extends Item implements UpdateState {
+export class AgedBrie extends Item {
     constructor(
         name: string,
         sellIn: number,
@@ -9,8 +9,8 @@ export class AgedBrie extends Item implements UpdateState {
             super(name,sellIn,quality);
             console.log("sellable ", sellable);
         }
-    
-    updateState(){
+
+    updateQuality(){
         let addition = this.quality + 1;
 
         this.quality = (addition > constants.NORMAL_ITEM_MAX_QUALITY) ? constants.NORMAL_ITEM_MAX_QUALITY : addition;

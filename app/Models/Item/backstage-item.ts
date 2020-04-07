@@ -1,7 +1,7 @@
 import { constants } from '../../Constants/constants';
 import { Item } from './item';
 
-export class BackStageItem extends Item implements UpdateState {
+export class BackStageItem extends Item {
 
     constructor(
         name: string,
@@ -9,15 +9,15 @@ export class BackStageItem extends Item implements UpdateState {
         quality: number,public sellable:boolean = false){
             super(name,sellIn,quality);
         }
-    
-    updateState(){
+
+    updateQuality(){
         // range between [10, 6]
         if(this.sellIn > 0){
             //range between [5,1]
-            if(5 >= this.sellIn){
+            if(this.isSellInDateWithinRange(1,5)){
                 let newValue = this.calculateQualityPlus(3);
-    
-                if(constants.NORMAL_ITEM_MAX_QUALITY < newValue){
+
+                if(this.checkIfNewValueExceedsMaximumQualityByAdding(3)){
                     this.setQualityToMax();
                 } else {
                     this.quality = newValue;
@@ -26,33 +26,25 @@ export class BackStageItem extends Item implements UpdateState {
             }
             if(10 >= this.sellIn){
                 let newValue = this.calculateQualityPlus(2);
-    
-                if(constants.NORMAL_ITEM_MAX_QUALITY < newValue){
+                if(this.checkIfNewValueExceedsMaximumQualityByAdding(2)){
                     this.setQualityToMax();
                 } else {
                     this.quality = newValue;
                 }
-    
                 return;
             }
+
             if(this.quality < constants.NORMAL_ITEM_MAX_QUALITY){
-                this.increaseQualityByValue(1);
+                this.quality += 1;
             }
         } else {
             this.quality = 0;
         }
-        
     }
 
-    private calculateQualityPlus(number: number): number {
-        return this.quality + number;
-    }
+    private checkIfNewValueExceedsMaximumQualityByAdding(number: number){
+        let newValue = this.calculateQualityPlus(number);
 
-    private increaseQualityByValue(value: number){
-        this.quality = this.quality + value;
-    }
-
-    private setQualityToMax(){
-        this.quality = constants.NORMAL_ITEM_MAX_QUALITY;
+        return constants.NORMAL_ITEM_MAX_QUALITY < newValue;
     }
 }
