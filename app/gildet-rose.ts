@@ -1,18 +1,29 @@
-import { Item } from "./Models/Item/Item";
-
-import {ProductCategorizer} from "./Controllers/ProductCategorizer";
+import { Item } from "./models/Item/Item";
+import { AgedBrie } from "./models/Item/aged-brie-item";
+import { BackStageItem } from "./models/Item/backstage-item";
+import { SulfurasItem } from "./models/Item/sulfuras-item";
+import { ConjuredItem } from "./models/Item/conjured-item";
+import { ItemService } from "./services/item-service";
 
 export class GildedRose {
     items: Array<Item>;
+    itemService: ItemService = new ItemService;
 
     constructor(items = [] as Array<Item>) {
-        this.items = ProductCategorizer.categorizeProducts(items);
+        this.items = this.categorizeItems(items);
     }
 
-    updateStateOfItems() {
-        for(let item of this.items){
-            item.updateStateOfItem();
+    categorizeItems(items: Array<Item>){
+        
+        let arrayOfItems : Array<Item> = []
+
+        for(let item of items){
+            arrayOfItems.push(
+                this.itemService.categorizeItemByName(item)
+            );
         }
+
+        return arrayOfItems;
     }
 
 }

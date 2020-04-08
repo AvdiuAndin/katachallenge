@@ -1,3 +1,6 @@
+This repository has implemented the specifications of this challenge.
+Each class has been tested using testing framework Mocha and to run this tests you should run `npm run test` to see the result
+
 ======================================
 Gilded Rose Requirements Specification
 ======================================
@@ -36,5 +39,3 @@ for you).
 
 Just for clarification, an item can never have its Quality increase above 50, however "Sulfuras" is a
 legendary item and as such its Quality is 80 and it never alters.
-
-To run the test just run the command 'npm run test'
