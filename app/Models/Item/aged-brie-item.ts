@@ -1,18 +1,19 @@
 import { Item } from "./item";
-import { constants } from "../../Constants/constants";
+import { constants } from "../../constans/constants";
 
 export class AgedBrie extends Item {
+
     constructor(
         name: string,
         sellIn: number,
-        quality: number, public sellable = false){
+        quality: number){
             super(name,sellIn,quality);
-            console.log("sellable ", sellable);
-        }
+    }
 
+    /**
+     * "Aged Brie" actually increases in Quality the older it gets
+     */
     updateQuality(){
-        let addition = this.quality + 1;
-
-        this.quality = (addition > constants.NORMAL_ITEM_MAX_QUALITY) ? constants.NORMAL_ITEM_MAX_QUALITY : addition;
+        super.addToQuality(1);
     }
 }
