@@ -1,5 +1,5 @@
 This repository has implemented the specifications of this challenge.
-Each class has been tested using testing framework Mocha and to run this tests you should run `npm run test` to see the result
+Each class has been tested using testing framework Mocha and to run these tests you should run `npm run test` to see the result
 
 ======================================
 Gilded Rose Requirements Specification
