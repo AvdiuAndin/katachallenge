@@ -1,5 +1,7 @@
-In this repo is the implementation of specifications of this challenge.
-Each class has been tested using testing framework Mocha and to see the results of these tests you should run `npm run test`
+This repo implements specifications for this challenge.
+Each class has been tested using testing framework Mocha and to see the results of these tests you should run `npm install`
+and then
+`npm run test`, results will output in cli
 
 ======================================
 Gilded Rose Requirements Specification
